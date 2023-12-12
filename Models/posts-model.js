@@ -1,27 +1,27 @@
 const  supabase= require("../config/supabase");
 
-async function register(full_name, email, password ,token,role,id_project,) {
+async function createPost(id_post, id_user, content) {
 
-    const { data: user, error } = await supabase.from('users').insert({full_name, email, password,token ,role});
+    const { data: post, error } = await supabase.from('post').insert({id_post, id_user, content});
     //console.log(user);
     if (error) {
       throw new Error(error.message);
     }
-    return user;
+    return post;
 }
 
-async function login(email, password ) {
+async function getPosts(id_user) {
   
-    const { data: user, error } = await supabase.from('users').select('token').eq('email',email).eq('password',password).single();
+    const { data: posts, error } = await supabase.from('post').select('*').eq('id_user',id_user);
     console.log(user);
     if (error) {
       throw new Error(error.message);
     }
-    return user;
+    return posts;
 }
   
 
   module.exports = {
-    register,
-    login,
+    createPost,
+    getPosts,
   };

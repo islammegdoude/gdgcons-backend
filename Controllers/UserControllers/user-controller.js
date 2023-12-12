@@ -11,7 +11,7 @@ async function login(req, res, next){
     try {
       const login = {
         status: res.status(200) ? 'successful' : 'err server',
-        data : [await userModel.login(email, encryptedPassword )],
+        data : await userModel.login(email, encryptedPassword ),
       }
 
       if (login.data[0].token != null) {
@@ -29,15 +29,15 @@ async function login(req, res, next){
   }
 
 async function register(req, res, next){
-  const {full_name, email, password,role } = req.body;
+  const {full_name, email, password ,role,id_project,id_bloc,id_lot,phone,etage,type } = req.body;
   const encryptedPassword = crypto.createHash('md5').update(password).digest('hex');
   const token = jwt.sign({ full_name,email}, process.env.APP_KEY);
     try {
-      const login = {
+      const register = {
         status: res.status(200) ? 'successful' : 'err server',
-        data : await userModel.register(full_name, email, encryptedPassword, token,role),
+        data : await userModel.register(full_name, email, encryptedPassword ,token,role,id_project,id_bloc,id_lot,phone,etage,type ),
       }
-      res.json(login);
+      res.json(register);
     } catch (error) {
       next(error);
     }  
