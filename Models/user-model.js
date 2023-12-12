@@ -12,7 +12,7 @@ async function register(full_name, email, password ,token,role,id_project,id_blo
 
 async function login(email, password ) {
   
-    const { data: user, error } = await supabase.from('user').select('token').eq('email',email).eq('password',password).limit(1);
+    const { data: user, error } = await supabase.from('user').select('token,id_bloc,id_user').eq('email',email).eq('password',password).limit(1);
     console.log(user);
     if (error) {
       throw new Error(error.message);

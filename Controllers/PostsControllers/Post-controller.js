@@ -6,26 +6,26 @@ require("dotenv").config();
 
 
 async function createPost(req, res, next){
-    const {id_post, id_user, content} = req.body;
+    const {id_user, content} = req.body;
       try {
         const createPost = {
           status: res.status(200) ? 'successful' : 'err server',
-          data : await postModel.createPost(id_post, id_user, content),
+          data : await postModel.createPost(id_user, content),
         }
-        res.json(login);
+        res.json(createPost);
       } catch (error) {
         next(error);
       }  
   }
 
   async function getPosts(req, res, next){
-    const {id_user} = req.body;
+    const {id_user,id_bloc} = req.body;
       try {
-        const createPost = {
+        const getPosts = {
           status: res.status(200) ? 'successful' : 'err server',
-          data : await postModel.createPost(id_user),
+          data : await postModel.getPosts(id_user,id_bloc),
         }
-        res.json(login);
+        res.json(getPosts);
       } catch (error) {
         next(error);
       } 
