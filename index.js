@@ -14,7 +14,11 @@ app.listen(port, () => {
 // const adminRouting = require('./routes/admin-routes/admin-routing');
 // const jobRouting = require('./routes/job-routes/job-routing');
 const userRouting = require('./Routes/user-routing');
+const postsRouting = require('./Routes/posts-routing');
+const ticketRouting = require('./Routes/ticket-routing');
+const updateRouting = require('./Routes/update-routing');
 
 
-app.use('/api',userRouting);
+
+app.use('/api',userRouting,postsRouting,ticketRouting,updateRouting);
 
