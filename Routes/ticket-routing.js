@@ -8,7 +8,5 @@ router.post('/ticket/create', ticketController.createTicket);
 // getTicketById
 router.get('/posts/getTicketById' ,ticketController.getTicketById);
 
-// getTicketsByUser
-router.get('/posts/getTicketsByUser' ,ticketController.getTicketsByUser);
 
 module.exports = router;

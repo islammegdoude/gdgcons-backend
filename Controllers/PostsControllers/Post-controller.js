@@ -19,11 +19,11 @@ async function createPost(req, res, next){
   }
 
   async function getPosts(req, res, next){
-    const {id_user,id_bloc} = req.body;
+    const {id_bloc} = req.body;
       try {
         const getPosts = {
           status: res.status(200) ? 'successful' : 'err server',
-          data : await postModel.getPosts(id_user,id_bloc),
+          data : await postModel.getPosts(id_bloc),
         }
         res.json(getPosts);
       } catch (error) {

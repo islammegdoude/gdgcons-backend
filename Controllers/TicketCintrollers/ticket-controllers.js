@@ -19,15 +19,22 @@ require("dotenv").config();
       } 
   }
 
-  async function getTicketsByUser(req, res, next){
-  }
 
   async function getTicketById(req, res, next){
+    const {id_user} = req.body;
 
+      try {
+        const getTicketById = {
+          status: res.status(200) ? 'successful' : 'err server',
+          data : await ticketModel.getTicketById(id_user),
+        }
+        res.json(getTicketById);
+      } catch (error) {
+        next(error);
+      } 
   }
 
   module.exports = {
     createTicket,
-    getTicketsByUser,
     getTicketById,
   };
