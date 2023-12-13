@@ -27,6 +27,15 @@ async function getUpdatesByUser(id_project,id_bloc) {
     return updates;
 }
 
+async function getImagesByUpdate(id_update) {
+
+  const { data: images, error } = await supabase.from('image').select('*').eq('id_update',id_update);
+  //console.log(user);
+  if (error) {
+    throw new Error(error.message);
+  }
+  return images;
+}
 module.exports = {
     createUpdate,
     getUpdatesByUser
