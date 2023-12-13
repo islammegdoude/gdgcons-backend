@@ -19,6 +19,7 @@ const ticketRouting = require('./Routes/ticket-routing');
 const updateRouting = require('./Routes/update-routing');
 
 
+// api url : http://localhost:3000/api
 
 app.use('/api',userRouting,postsRouting,ticketRouting,updateRouting);
 
