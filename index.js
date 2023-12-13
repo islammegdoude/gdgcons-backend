@@ -17,9 +17,10 @@ const userRouting = require('./Routes/user-routing');
 const postsRouting = require('./Routes/posts-routing');
 const ticketRouting = require('./Routes/ticket-routing');
 const updateRouting = require('./Routes/update-routing');
+const notificationRouting = require('./Routes/notification-routing');
 
 
 // api url : http://localhost:3000/api
 
-app.use('/api',userRouting,postsRouting,ticketRouting,updateRouting);
+app.use('/api',userRouting,postsRouting,ticketRouting,updateRouting,notificationRouting);
 
