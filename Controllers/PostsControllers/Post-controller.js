@@ -6,11 +6,11 @@ require("dotenv").config();
 
 
 async function createPost(req, res, next){
-    const {id_user, content} = req.body;
+    const {id_user, content,id_bloc} = req.body;
       try {
         const createPost = {
           status: res.status(200) ? 'successful' : 'err server',
-          data : await postModel.createPost(id_user, content),
+          data : await postModel.createPost(id_user, content,id_bloc),
         }
         res.json(createPost);
       } catch (error) {
